@@ -3,7 +3,7 @@ import csv
 import datetime
 
 from django.core.management.base import BaseCommand
-from .models import Sighting
+from squirrel.models import Sighting
 
 
 class Command(BaseCommand):
@@ -12,7 +12,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         path = options['path']
-        with open(path,r) as fp:
+
+        def makebool(x):
+            if x.lower() == 'true':
+                return 'True'
+            else:
+                return 'False'
+        with open(path,'r') as fp:
             reader = csv.DictReader(fp)
             data = list(reader)
         squirrel_data=[]
@@ -26,22 +32,22 @@ class Command(BaseCommand):
                 age = dict_['Age'],
                 primary_fur_color = dict_['Primary Fur Color'],
                 location = dict_['Location'],
-                specific_location = row['Specific Location'],
-                running = dict_['Running'],
-                chasing = dict_['Chasing'],
-                climbing = dict_['Climbing'],
-                eating = dict_['Eating'],
-                foraging = dict_['Foraging'],
+                specific_location = dict_['Specific Location'],
+                running =makebool(dict_['Running'].capitalize()),
+                chasing =makebool( dict_['Chasing'].capitalize()),
+                climbing =makebool( dict_['Climbing'].capitalize()),
+                eating =makebool( dict_['Eating'].capitalize()),
+                foraging =makebool(dict_['Foraging'].capitalize()),
                 other_activities = dict_['Other Activities'],
-                kuks = dict_['Kuks'],
-                quaas = dict_['Quaas'],
-                moans = dict_['Moans'],
-                tail_flags = dict_['Tail flags'],
-                tail_twitches = dict_['Tail twitches'],
-                approaches = dict_['Approaches'],
-                indifferent = dict_['Indifferent'],
-                runs_from = dict_['Runs from'],
+                kuks =makebool( dict_['Kuks'].capitalize()),
+                quaas =makebool( dict_['Quaas'].capitalize()),
+                moans =makebool( dict_['Moans'].capitalize()),
+                tail_flags =makebool( dict_['Tail flags'].capitalize()),
+                tail_twitches =makebool( dict_['Tail twitches'].capitalize()),
+                approaches =makebool(dict_['Approaches'].capitalize()),
+                indifferent =makebool( dict_['Indifferent'].capitalize()),
+                runs_from =makebool( dict_['Runs from'].capitalize()),
                 ))
 
-         Sighting.objects.bulk_create(squirrel_data)
+        Sighting.objects.bulk_create(squirrel_data)
 

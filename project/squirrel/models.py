@@ -112,39 +112,39 @@ class Sighting(models.Model):
         blank = True,
         )
 
-    Kuks = models.BooleanField(
+    kuks = models.BooleanField(
             default = False,
             help_text = _('Kuks?'),
             )
-    Quaas = models.BooleanField( 
+    quaas = models.BooleanField( 
             default = False,
             help_text = _('Quaas?'),
             )
-    Moans = models.BooleanField(
+    moans = models.BooleanField(
             default = False,
             help_text = _('Moans?'),
             )
-    Tail_flags = models.BooleanField(
+    tail_flags = models.BooleanField(
             default = False,
             help_text = _('Tail Flags?'),
             )
-    Tail_twitches = models.BooleanField(
+    tail_twitches = models.BooleanField(
             default = False,
             help_text = _('Tail twitches?'),
             )
-    Approaches = models.BooleanField(
+    approaches = models.BooleanField(
             default = False,
             help_text = _('Approaches?'),
             )
-    Indifferent = models.BooleanField(
+    indifferent = models.BooleanField(
             default = False,
             help_text = _('Indifferent?'),
             )
-    Runs_from = models.BooleanField(
+    runs_from = models.BooleanField(
             default = False,
             help_text = _('Runs from?'),
             )
-    Other_interactions = models.CharField(
+    other_interactions = models.CharField(
         max_length = 500,
         help_text=_('Other Interactions?'),
         blank = True,
