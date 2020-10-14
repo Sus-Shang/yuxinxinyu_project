@@ -8,3 +8,11 @@ def map(request):
             'sightings':sightings,
             }
     return render(request,'squirrel/map.html',context)
+
+def sightings(request):
+    squirrels = Sighting.objects.all()
+    context = {
+            'squirrels':squirrels,
+            }
+    return render(request,'squirrel/sightings.html',context)
+
