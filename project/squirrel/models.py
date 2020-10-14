@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext as _
 
 class Sighting(models.Model):
     latitude = models.FloatField(
@@ -48,7 +49,7 @@ class Sighting(models.Model):
    
 
     BLACK='Black'
-    CINNAMON= 'Cinamon'
+    CINNAMON= 'Cinnamon'
     GRAY = 'Gray'
     OTHER = 'Other'
     PRIMARY_FUR_COLOR_CHOICE=[
@@ -111,8 +112,41 @@ class Sighting(models.Model):
         blank = True,
         )
 
-
-
-
-
+    Kuks = models.BooleanField(
+            default = False,
+            help_text = _('Kuks?'),
+            )
+    Quaas = models.BooleanField( 
+            default = False,
+            help_text = _('Quaas?'),
+            )
+    Moans = models.BooleanField(
+            default = False,
+            help_text = _('Moans?'),
+            )
+    Tail_flags = models.BooleanField(
+            default = False,
+            help_text = _('Tail Flags?'),
+            )
+    Tail_twitches = models.BooleanField(
+            default = False,
+            help_text = _('Tail twitches?'),
+            )
+    Approaches = models.BooleanField(
+            default = False,
+            help_text = _('Approaches?'),
+            )
+    Indifferent = models.BooleanField(
+            default = False,
+            help_text = _('Indifferent?'),
+            )
+    Runs_from = models.BooleanField(
+            default = False,
+            help_text = _('Runs from?'),
+            )
+    Other_interactions = models.CharField(
+        max_length = 500,
+        help_text=_('Other Interactions?'),
+        blank = True,
+        )
 
