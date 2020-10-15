@@ -5,4 +5,4 @@ app_name = 'squirrel'
 
 urlpatterns=[
         path('map/', views.map,name='map'),
-        ]
+        path('add/',views.Add,name='add')]
