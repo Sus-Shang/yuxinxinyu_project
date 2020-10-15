@@ -18,11 +18,14 @@ def sightings(request):
     return render(request,'squirrel/sightings.html',context)
 
 def add(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = SightingForm()
+        return render(request, 'squirrel/add.html', {'form': form})
+    elif request.method == 'POST':
         form = SightingForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/sightings/')
+            return HttpResponseRedirect('/sightings/{}/')
     else:
         form = SightingForm()
 
