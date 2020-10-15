@@ -1,10 +1,9 @@
 
-from django.db import models
 from django.forms import ModelForm
-from .models import Sighting
+from squirrel.models import Sighting
 
 
-class SighingtForm(ModelForm):
+class SightingForm(ModelForm):
     class Meta:
         model = Sighting
         fields = '__all__'

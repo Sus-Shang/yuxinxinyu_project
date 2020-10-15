@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import Sighting
-from .forms import Sigitingform
+from .forms import SightingForm
 
 def map(request):
     sightings = Sighting.objects.all()
