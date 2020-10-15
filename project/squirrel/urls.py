@@ -5,5 +5,6 @@ app_name = 'squirrel'
 
 urlpatterns=[
         path('map/', views.map, name='map'),
-        path('add/', views.add, name='add')
+        path('stats/',views.stats,name="stats"),
+        path('add/', views.add, name='add'),
         ]
