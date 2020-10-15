@@ -29,3 +29,26 @@ def add(request):
     else:
         form = SightingForm()
 
+def stats(request):
+    if request.method == 'GET':
+        return render(request, 'squirrel/stats.html')
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+def update(request, squirrel_id):
+    squirrel = Sighting.objects.get(unique_squirrel_ID = squirrel_id)
+    context = {
+            'squirresl': squirrels,
+            }
+    if requesr_method == "POST":
+        form = SightingForm(request.POST, instance = squirrel)
+        if form.is_valid():
+            form.save(commit)
+            return redirect(f'squirrel/sightings/{squirrel_id}')
+    else:
+        form = SightingForm(instance = = squirrel)
+        context = {
+                'form': form,
+        }
+        return render(request, 'squirrel/update.html', context)
+
