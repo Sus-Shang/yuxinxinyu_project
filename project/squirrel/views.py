@@ -4,7 +4,7 @@ from .models import Sighting
 from .forms import SightingForm
 
 def map(request):
-    sightings = Sighting.objects.all()
+    sightings = Sighting.objects.all()[0:100]
     context = {
             'sightings':sightings,
             }

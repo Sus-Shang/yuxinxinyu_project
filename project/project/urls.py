@@ -19,6 +19,8 @@ from squirrel import views
 
 urlpatterns = [ 
     path('admin/', admin.site.urls),
-    path('sightings/add', views.add,name = 'add')
+    path('sightings/add', views.add,name = 'add'),
+    path('map/', views.map, name = 'map')
 ]
+
 
