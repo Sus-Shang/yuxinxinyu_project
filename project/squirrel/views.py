@@ -46,7 +46,7 @@ def update(request, squirrel_id):
             form.save(commit)
             return redirect(f'squirrel/sightings/{squirrel_id}')
     else:
-        form = SightingForm(instance = = squirrel)
+        form = SightingForm(instance = squirrel)
         context = {
                 'form': form,
         }
