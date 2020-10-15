@@ -31,7 +31,20 @@ def add(request):
 
 def stats(request):
     if request.method == 'GET':
-        return render(request, 'squirrel/stats.html')
+        sightings_stats_1=Sighting.objects.all().count()
+        sightings_stats_2=Sighting.objects.get(location='Above Ground').count()
+        sightings_stats_3=Sighting.objects.get(age='Adult').count()
+        sightings_stats_4=Sighting.objects.get(primary_fur_color='Cinnamon').count()
+        sightings_stats_5=Sighting.objects.get(Eating='True').count()
+        context={
+             'Stat_1':sightings_stats_1,
+             'Stat_2':sightings_stats_2,
+             'Stat_3':sightings_stats_3,
+             'Stat_4':sightings_stats_4,
+             'Stat_5':sightings_stats_5,
+              }
+
+        return render(request, 'squirrel/stats.html',context)
     else:
         return HttpResponseNotAllowed(['GET'])
 
