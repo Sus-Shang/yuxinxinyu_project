@@ -6,10 +6,12 @@ import sys
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
-        parser.add_argument('file_path', type = str)
+        parser.add_argument('path', type = str)
 
-    def handle(self, *args, **kwargs):
-        path = args[0]
+    def handle(self, *args, **options):
+        #path = args[0]
+        meta = Sighting._meta
+        path = options['path']
         fields = Sighting._meta.fields
         with open(path, 'w') as f:
             writer = csv.writer(f)
