@@ -72,9 +72,9 @@ def update(request,unique_squirrel_ID):
     if form.is_valid():
         Squirrel = form.save()
         Squirrel.save()
-        return redirect('/squirrel/sightings/')
+        return redirect('/sightings')
     else:
         context = {
                 'form': form,
         }
-        return render(request, 'squirrel/sightings/update.html', context)
+        return render(request, 'squirrel/update.html', context)
