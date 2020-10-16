@@ -149,4 +149,6 @@ class Sighting(models.Model):
         help_text=_('Other Interactions?'),
         blank = True,
         )
-    
+    def __str__(self):
+        return self.unique_squirrel_ID
+

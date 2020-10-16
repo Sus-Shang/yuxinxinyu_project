@@ -1,13 +1,41 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sightings</title>
-</head>
-<body>
-    <h1>List Sightings</h1>
-    <h2>>Click to <a href="/sightings/add">add</a> a sighting record.</h2>
-    <h2>>Click to see the <a href="/sightings/stats">stats</a></h2>
-</body>
-</html>
+        <title>Squirrel sightings</title>
+    </head>
+
+    <body>
+
+
+        <h1>Squirrel sightings list</h1>
+        <br>
+	<a href='/sightings/stats'}>View the stats data</a>
+	<br>
+	<a href='/sightings/add'>Add new squirrel sighting</a>
+
+        <h3>unique_squirrel_ID of all squirrels' sightings </h3>
+            {%if sightings%}
+                <ul>
+                    {%for squirrels in sightings%}
+		    <li>{{squirrels.unique_squirrel_ID}}
+			<br>
+			<a href='/sightings/{{squirrels.unique_squirrel_ID}}/'> Update the information about this squirrel </a>
+			<br>
+			<a href='/sightings/{{squirrels.unique_squirrel_ID}}/IDdetails'>  See details about this squirrel </a>
+			</li>
+		    {%endfor%}
+                </ul>
+            {% else %}
+                <p>No sighting available, you can add some
+		 <a href='/sightings/add'>Add new squirrel sighting</a>
+		</p>
+            {%endif%}
+
+    </body>
+
+
+
+
+
+<html/>

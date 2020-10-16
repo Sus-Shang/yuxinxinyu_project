@@ -22,10 +22,14 @@ class Command(BaseCommand):
             reader = csv.DictReader(fp)
             data = list(reader)
         squirrel_data=[]
+        squirrel_id = []
         for dict_ in data:
-            squirrel_data.append(Sighting(
-                latitude = float(dict_['Y']),
+            if dict_['Unique Squirrel ID'] in squirrel_id:
+                    continue
+            else:
+                squirrel_data.append(Sighting(
                 longitude = float(dict_['X']),
+                latitude = float(dict_['Y']),
                 unique_squirrel_ID = dict_['Unique Squirrel ID'],
                 shift = dict_['Shift'],
                 date = datetime.datetime.strptime(dict_['Date'],'%m%d%Y'),
@@ -48,6 +52,6 @@ class Command(BaseCommand):
                 indifferent =makebool( dict_['Indifferent'].capitalize()),
                 runs_from =makebool( dict_['Runs from'].capitalize()),
                 ))
-
+                squirrel_id.append(dict_['Unique Squirrel ID'])
         Sighting.objects.bulk_create(squirrel_data)
 

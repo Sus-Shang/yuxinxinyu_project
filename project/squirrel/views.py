@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import Sighting
 from .forms import SightingForm
+from django.http import Http404
+
 
 def map(request):
     sightings = Sighting.objects.all()[0:50]
@@ -10,10 +12,20 @@ def map(request):
             }
     return render(request,'squirrel/map.html',context)
 
+def index(request):
+    try:
+        sightings=Sighting.objects.all()
+        context={
+                'sightings':sightings,
+                }
+    except:
+        raise Http404("Does not exist!")
+    return render(request,'squirrel/index.html',context)
+
 def sightings(request):
-    squirrels = Sighting.objects.all()
+    sightings= Sighting.objects.all()
     context = {
-            'squirrels':squirrels,
+            'sightings':sightings,
             }
     return render(request,'squirrel/sightings.html',context)
 
@@ -32,10 +44,10 @@ def add(request):
 def stats(request):
     if request.method == 'GET':
         sightings_stats_1=Sighting.objects.all().count()
-        sightings_stats_2=Sighting.objects.get(location='Above Ground').count()
-        sightings_stats_3=Sighting.objects.get(age='Adult').count()
-        sightings_stats_4=Sighting.objects.get(primary_fur_color='Cinnamon').count()
-        sightings_stats_5=Sighting.objects.get(Eating='True').count()
+        sightings_stats_2=Sighting.objects.filter(location='Above Ground').count()
+        sightings_stats_3=Sighting.objects.filter(age='Adult').count()
+        sightings_stats_4=Sighting.objects.filter(primary_fur_color='Cinnamon').count()
+        sightings_stats_5=Sighting.objects.filter(eating='True').count()
         context={
              'Stat_1':sightings_stats_1,
              'Stat_2':sightings_stats_2,
@@ -48,16 +60,22 @@ def stats(request):
     else:
         return HttpResponseNotAllowed(['GET'])
 
-def update(request, squirrel_id):
-    squirrel = Sighting.objects.get(unique_squirrel_ID = squirrel_id)
+
+def IDdetails(request,unique_squirrel_ID):
+    squirrels= Sighting.objects.get(unique_squirrel_ID=unique_squirrel_ID)
+    context = {'squirrels':squirrels,}
+    return render(request,'squirrel/IDdetails.html',context)
+
+def update(request,unique_squirrel_ID):
+    squirrel = Sighting.objects.get(unique_squirrel_ID = unique_squirrel_ID)
     context = {
-            'squirresl': squirrels,
+            'squirrels': squirrels,
             }
-    if requesr_method == "POST":
+    if request_method == "POST":
         form = SightingForm(request.POST, instance = squirrel)
         if form.is_valid():
             form.save(commit)
-            return redirect(f'squirrel/sightings/{squirrel_id}')
+            return redirect(f'squirrel/sightings/{unique_squirrel_ID}')
     else:
         form = SightingForm(instance = squirrel)
         context = {
