@@ -26,15 +26,15 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 
 ### 2. Views
 * Map
-- A view that shows a map that displays location of squirrel sightings: /map
+A view that shows a map that displays location of squirrel sightings: /map
 * Sighting List
-- A view that lists all squirrel sightings with links to view each sighting: /sightings
+A view that lists all squirrel sightings with links to view each sighting: /sightings
 * Update
-- A view to update a particular sighting: /sightings/<unique-squirrel-id>
+A view to update a particular sighting: /sightings/<unique-squirrel-id>
 * Add
-- A view to create a new sighting: /sightings/add
+A view to create a new sighting: /sightings/add
 * Stats
-- A view with general stats about the sightings: /sightings/stats
+A view with general stats about the sightings: /sightings/stats
 
 ## Group Information
 
@@ -43,7 +43,7 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 
 ## List of UNIS
 
-UNIs: [ys3386,xm2256]
+UNIs: [ys3386, xm2256]
 
 ## Dependencies
 
