@@ -8,7 +8,7 @@ Squirrel Tracker in Central Park
 ## What is it?
 
 **Squirrel** is an app that allows you to track NYC squirrel sightings in Central Park of New York.
-
+Users of this app can view squirrels' data(either in list or map), and can also add, update the data themselves.
 ## Main Features
 
 Here are the main features that **Squirrel** does:
@@ -27,7 +27,7 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 ### 2. Views
 * Map
 
-A view that shows a map that displays location of squirrel sightings: /map
+A view that shows a map that displays location of squirrels sightings: /map
 
 * Sighting List
 
@@ -36,6 +36,9 @@ A view that lists all squirrel sightings with links to view each sighting: /sigh
 * Update
 
 A view to update a particular sighting: /sightings/<unique-squirrel-id>
+
+* Details
+A view to list the specific details of a unique squirrel ID. /sightings/<unique-squirrel-id>/IDdetails
 
 * Add
 
@@ -59,4 +62,4 @@ UNIs: [ys3386, xm2256]
 - [Django](https://www.djangoproject.com/)
 
 ## Source
--[CSV data source](https://data.cityofnewyork.us/api/views/vfnx-vebw/rows.csv)
+- [CSV data source](https://data.cityofnewyork.us/api/views/vfnx-vebw/rows.csv)
