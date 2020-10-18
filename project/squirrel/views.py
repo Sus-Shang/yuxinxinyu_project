@@ -61,10 +61,10 @@ def stats(request):
         return HttpResponseNotAllowed(['GET'])
 
 
-#def IDdetails(request,unique_squirrel_ID):
-#    squirrels= Sighting.objects.get(unique_squirrel_ID=unique_squirrel_ID)
-#    context = {'squirrels':squirrels,}
-#    return render(request,'squirrel/IDdetails.html',context)
+def IDdetails(request,unique_squirrel_ID):
+    squirrels= Sighting.objects.get(unique_squirrel_ID=unique_squirrel_ID)
+    context = {'squirrels':squirrels,}
+    return render(request,'squirrel/IDdetails.html',context)
 
 def update(request,unique_squirrel_ID):
     Squirrel = get_object_or_404(Sighting, unique_squirrel_ID=unique_squirrel_ID)

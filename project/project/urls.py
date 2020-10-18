@@ -24,7 +24,8 @@ urlpatterns = [
     path('sightings/stats',views.stats, name = 'stats'),
     path('sightings', views.sightings,name = 'sightings'),
     path('map/', views.map, name = 'map'),
-    path('sightings/<unique_squirrel_ID>/', views.update, name='update')
+    path('sightings/<unique_squirrel_ID>/', views.update, name='update'),
+    path('sightings/<unique_squirrel_ID>/IDdetails', views.IDdetails, name='details')
 ]
 
 
