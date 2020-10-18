@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import Sighting
 from .forms import SightingForm
@@ -61,25 +61,20 @@ def stats(request):
         return HttpResponseNotAllowed(['GET'])
 
 
-def IDdetails(request,unique_squirrel_ID):
-    squirrels= Sighting.objects.get(unique_squirrel_ID=unique_squirrel_ID)
-    context = {'squirrels':squirrels,}
-    return render(request,'squirrel/IDdetails.html',context)
+#def IDdetails(request,unique_squirrel_ID):
+#    squirrels= Sighting.objects.get(unique_squirrel_ID=unique_squirrel_ID)
+#    context = {'squirrels':squirrels,}
+#    return render(request,'squirrel/IDdetails.html',context)
 
 def update(request,unique_squirrel_ID):
-    squirrel = Sighting.objects.get(unique_squirrel_ID = unique_squirrel_ID)
-    context = {
-            'squirrels': squirrels,
-            }
-    if request_method == "POST":
-        form = SightingForm(request.POST, instance = squirrel)
-        if form.is_valid():
-            form.save(commit)
-            return redirect(f'squirrel/sightings/{unique_squirrel_ID}')
+    Squirrel = get_object_or_404(Sighting, unique_squirrel_ID=unique_squirrel_ID)
+    form = SightingForm(request.POST or None, instance = Squirrel)
+    if form.is_valid():
+        Squirrel = form.save()
+        Squirrel.save()
+        return redirect('/sightings')
     else:
-        form = SightingForm(instance = squirrel)
         context = {
                 'form': form,
         }
         return render(request, 'squirrel/update.html', context)
-
