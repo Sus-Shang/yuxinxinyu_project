@@ -38,6 +38,7 @@ A view that lists all squirrel sightings with links to view each sighting: /sigh
 A view to update a particular sighting: /sightings/<unique-squirrel-id>
 
 * Details
+
 A view to list the specific details of a unique squirrel ID. /sightings/<unique-squirrel-id>/IDdetails
 
 * Add
