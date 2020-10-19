@@ -6,7 +6,7 @@ from django.http import Http404
 
 
 def map(request):
-    sightings = Sighting.objects.all()[0:50]
+    sightings = Sighting.objects.all()[0:100]
     context = {
             'sightings':sightings,
             }
