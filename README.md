@@ -27,27 +27,39 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 ### 2. Views
 * Map
 
-A view that shows a map that displays location of squirrels sightings: /map
+A view that shows a map that displays location of the first 100 squirrels' sightings
+
+Located at: /map
 
 * Sighting List
 
-A view that lists all squirrel sightings with links to view each sighting: /sightings
+A view that lists all squirrel sightings with links to view each sighting
+
+Located at: /sightings
 
 * Update
 
-A view to update a particular sighting: /sightings/unique-squirrel-id
+A view to update a particular sighting
+
+Located at : /sightings/unique-squirrel-id
 
 * Details
 
-A view to list the specific details of a unique squirrel ID. /sightings/unique-squirrel-id/IDdetails
+A view to list the specific details of a unique squirrel ID
+
+Located at: /sightings/unique-squirrel-id/IDdetails
 
 * Add
 
-A view to create a new sighting: /sightings/add
+A view to create a new sighting
+
+Located at: /sightings/add
 
 * Stats
 
-A view with general stats about the sightings: /sightings/stats
+A view with general stats about the sightings
+
+Located at: /sightings/stats
 
 ## Group Information
 
