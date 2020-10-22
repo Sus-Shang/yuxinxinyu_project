@@ -42,6 +42,6 @@ class Command(BaseCommand):
             writer.writerow(attributes)
             
             for i in Sighting.objects.all():
-                row = [getattr(i, field.name) for field in fields[1:]]
+                row = [getattr(i, field.name) for field in fields]
                 writer.writerow(row)
             f.close()
