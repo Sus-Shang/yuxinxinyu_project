@@ -25,7 +25,7 @@ urlpatterns = [
     path('sightings', views.sightings,name = 'sightings'),
     path('map/', views.map, name = 'map'),
     re_path(r'sightings/(?P<unique_squirrel_ID>[0-9]+[A-Z]-[A-Z]{2}-[0-9]{4}-[0-9]{2})/$', views.update, name='update'),
-    path('sightings/<unique_squirrel_ID>/IDdetails', views.IDdetails, name='details')
+    re_path('rsightings/(?P<unique_squirrel_ID>[0-9]+[A-Z]-[A-Z]{2}-[0-9]{4}-[0-9]{2})/IDdetails', views.IDdetails, name='details')
 ]
 
 
