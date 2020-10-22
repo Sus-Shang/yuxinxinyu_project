@@ -25,6 +25,11 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 ```
 
 ### 2. Views
+
+On the index page, the users can choose to view the following options: map of sightings, list of sightings, general stats of sightings, or they can also add a new sighting.
+
+Specific functions of the views are described below:
+
 * Map
 
 A view that shows a map that displays location of the first 100 squirrels' sightings
@@ -51,13 +56,13 @@ Located at: /sightings/unique-squirrel-id/IDdetails
 
 * Add
 
-A view to create a new sighting
+A view to create a new sighting. (If format of data doesn't comply, users will be asked to update the specific data.)
 
 Located at: /sightings/add
 
 * Stats
 
-A view with general stats about the sightings
+A view with general stats about the sightings (total number of data, total number of squirrels above ground, total number of adult squirrels, total number of squirrels with cinnamon fur color, total number of squirrels eating).
 
 Located at: /sightings/stats
 
@@ -66,7 +71,7 @@ Located at: /sightings/stats
 * Project Group yuxinxinyu, Section 1
 * Group Members: Susan Shang, Xinyu Mei
 
-## List of UNIS
+## List of UNIs
 
 UNIs: [ys3386, xm2256]
 
