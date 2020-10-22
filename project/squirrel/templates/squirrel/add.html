@@ -1,0 +1,20 @@
+{% load static %}
+  
+<link rel="stylesheet" type="text/css" href="{% static 'squirrel/bg.css' %}">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add a new Sighting </title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <table>
+    {{form.as_table}}
+    </table>
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>
