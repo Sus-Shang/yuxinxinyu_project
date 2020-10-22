@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from django.core.validators import RegexValidator
 
 class Sighting(models.Model):
     latitude = models.FloatField(
@@ -14,6 +15,13 @@ class Sighting(models.Model):
     
     unique_squirrel_ID = models.CharField(
             max_length = 50,
+            primary_key = True,
+            validators=[
+            RegexValidator(
+                regex='[0-9]+[A-Z]-[A-Z]{2}-[0-9]{4}-[0-9]{2}',
+                message='Format doesnt comply',
+            ),
+        ],
             help_text=_('Squirrel_ID'),
              )
     PM = 'PM'
