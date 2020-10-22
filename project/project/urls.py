@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from squirrel import views
 
 urlpatterns = [ 
@@ -25,6 +25,7 @@ urlpatterns = [
     path('sightings', views.sightings,name = 'sightings'),
     path('map/', views.map, name = 'map'),
     path('sightings/<unique_squirrel_ID>/', views.update, name='update'),
+    # re_path(r'^sightings/(?P<unique_squirrel_ID>[0-9]+[A-Z]-[A-Z]{2}-[0-9]{4}-{0-9}{2})/$', views.update, name='update'),
     path('sightings/<unique_squirrel_ID>/IDdetails', views.IDdetails, name='details')
 ]
 
