@@ -40,6 +40,8 @@ def add(request):
             return HttpResponseRedirect('/sightings')
     else:
         form = SightingForm()
+    context = {'form':form}
+    return render(request, 'squirrel/update.html',context)
 
 def stats(request):
     if request.method == 'GET':
