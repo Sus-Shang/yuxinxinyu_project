@@ -64,7 +64,7 @@ class Sighting(models.Model):
             (BLACK,'Black'),
             (CINNAMON,'Cinnamon'),
             (GRAY,'Gray'),
-            (OTHER,'Other'),
+           (OTHER,'Other'),
             ]
     primary_fur_color=models.CharField(
         max_length = 50,
@@ -116,7 +116,7 @@ class Sighting(models.Model):
 
     other_activities = models.CharField(
         max_length = 500,
-        help_text=_('Specific Location'),
+        help_text=_('Other Activities'),
         blank = True,
         )
 
